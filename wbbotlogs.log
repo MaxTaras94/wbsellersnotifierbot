@@ -1,0 +1,693 @@
+2024-02-08 18:29:35,170 - __main__ - WARNING - Traceback (most recent call last):
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\__main__.py", line 62, in <module>
+    main()
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\__main__.py", line 47, in main
+    application.add_handler(CallbackQueryHandler(handlers.get_bot_instuction, pattern="bot_instuction"))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'wbsellersnotifierbot.handlers' has no attribute 'get_bot_instuction'
+
+2024-02-08 18:30:16,052 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 34, in read
+    return await self._stream.receive(max_bytes=max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_backends\_asyncio.py", line 1095, in receive
+    await self._protocol.read_event.wait()
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\asyncio\locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 1bcd713a210
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with anyio.fail_after(timeout):
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 268, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 251, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 133, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 111, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 176, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 212, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 31, in read
+    with map_exceptions(exc_map):
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_application.py", line 1234, in process_update
+    await coroutine
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\start.py", line 17, in start
+    user_ = await user(tg_user_id)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\services\users.py", line 30, in user
+    data = await client.get(settings.url_api_service+f"api/users/get_user/{tg_user_id}/")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1757, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 365, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+2024-02-08 18:30:24,053 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_application.py", line 1234, in process_update
+    await coroutine
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\get_bot_instruction.py", line 25, in get_bot_instruction
+    inline_keyboard=InlineKeyboardMarkup(keyboards.main_menu))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_inline\inlinekeyboardmarkup.py", line 79, in __init__
+    raise ValueError(
+ValueError: The parameter `inline_keyboard` should be a sequence of sequences of InlineKeyboardButtons
+2024-02-08 18:31:28,123 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_application.py", line 1234, in process_update
+    await coroutine
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\get_bot_instruction.py", line 25, in get_bot_instruction
+    inline_keyboard=InlineKeyboardMarkup([keyboards.main_menu]))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_inline\inlinekeyboardmarkup.py", line 79, in __init__
+    raise ValueError(
+ValueError: The parameter `inline_keyboard` should be a sequence of sequences of InlineKeyboardButtons
+2024-02-08 18:36:04,152 - telegram.ext.Updater - ERROR - Error while getting Updates: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2024-02-08 18:36:04,152 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_sockets.py", line 190, in connect_tcp
+    addr_obj = ip_address(remote_host)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\ipaddress.py", line 54, in ip_address
+    raise ValueError(f'{address!r} does not appear to be an IPv4 or IPv6 address')
+ValueError: 'api.telegram.org' does not appear to be an IPv4 or IPv6 address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_sockets.py", line 193, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 961, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 268, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 251, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 99, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_httpxrequest.py", line 268, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 365, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 688, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 384, in polling_action_cb
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 373, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_extbot.py", line 558, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 525, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 3584, in get_updates
+    await self._post(
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 613, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_extbot.py", line 340, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 641, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 340, in _request_wrapper
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_httpxrequest.py", line 292, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2024-02-08 18:36:05,154 - telegram.ext.Updater - ERROR - Error while getting Updates: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2024-02-08 18:36:05,154 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_sockets.py", line 190, in connect_tcp
+    addr_obj = ip_address(remote_host)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\ipaddress.py", line 54, in ip_address
+    raise ValueError(f'{address!r} does not appear to be an IPv4 or IPv6 address')
+ValueError: 'api.telegram.org' does not appear to be an IPv4 or IPv6 address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_sockets.py", line 193, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 961, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 268, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 251, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 99, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_httpxrequest.py", line 268, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 365, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 688, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 384, in polling_action_cb
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 373, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_extbot.py", line 558, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 525, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 3584, in get_updates
+    await self._post(
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 613, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_extbot.py", line 340, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 641, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 340, in _request_wrapper
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_httpxrequest.py", line 292, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2024-02-08 18:36:06,670 - telegram.ext.Updater - ERROR - Error while getting Updates: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2024-02-08 18:36:06,670 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_sockets.py", line 190, in connect_tcp
+    addr_obj = ip_address(remote_host)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\ipaddress.py", line 54, in ip_address
+    raise ValueError(f'{address!r} does not appear to be an IPv4 or IPv6 address')
+ValueError: 'api.telegram.org' does not appear to be an IPv4 or IPv6 address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_sockets.py", line 193, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 961, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 268, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 251, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 99, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_httpxrequest.py", line 268, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 365, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 688, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 384, in polling_action_cb
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_updater.py", line 373, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_extbot.py", line 558, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 525, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 3584, in get_updates
+    await self._post(
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 613, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_extbot.py", line 340, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\_bot.py", line 641, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 340, in _request_wrapper
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\request\_httpxrequest.py", line 292, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2024-02-16 12:52:30,873 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 34, in read
+    return await self._stream.receive(max_bytes=max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_backends\_asyncio.py", line 1095, in receive
+    await self._protocol.read_event.wait()
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\asyncio\locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 2321803bd90
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with anyio.fail_after(timeout):
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\anyio\_core\_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 268, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection_pool.py", line 251, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 133, in handle_async_request
+    raise exc
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 111, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 176, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_async\http11.py", line 212, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_backends\anyio.py", line 31, in read
+    with map_exceptions(exc_map):
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_application.py", line 1234, in process_update
+    await coroutine
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\start.py", line 20, in start
+    user_ = await user(tg_user_id)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\services\users.py", line 30, in user
+    data = await client.get(settings.url_api_service+f"api/users/get_user/{tg_user_id}/")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1757, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 365, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\dnevn\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\httpx\_transports\default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+2024-02-19 10:28:02,576 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_application.py", line 1234, in process_update
+    await coroutine
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\start.py", line 18, in start
+    response=render_template("test_msg.j2", data={'data':data}),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\templates.py", line 10, in render_template
+    template = _get_template_env().get_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "wbsellersnotifierbot\templates\test_msg.j2", line 2, in template
+    brand: {{data['brand']safe}}<br>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got 'safe'
+2024-02-19 10:28:10,072 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_application.py", line 1234, in process_update
+    await coroutine
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\start.py", line 18, in start
+    response=render_template("test_msg.j2", data={'data':data}),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\templates.py", line 10, in render_template
+    template = _get_template_env().get_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "wbsellersnotifierbot\templates\test_msg.j2", line 2, in template
+    brand: {{data['brand']safe}}<br>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got 'safe'

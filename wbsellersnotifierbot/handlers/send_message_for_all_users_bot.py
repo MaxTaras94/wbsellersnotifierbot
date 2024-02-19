@@ -1,0 +1,92 @@
+import asyncio
+import telegram
+from telegram import Chat, Update 
+from telegram.ext import ContextTypes, ConversationHandler
+from typing import cast
+from wbsellersnotifierbot import keyboards
+from wbsellersnotifierbot.handlers.delete_message import delete_previous_msg
+from wbsellersnotifierbot.handlers.response import get_chat_id, send_response
+from wbsellersnotifierbot.services.users import users
+from wbsellersnotifierbot.settings import settings
+from wbsellersnotifierbot.templates import render_template
+
+    
+async def input_text_for_send_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    '''Функция отправляет пользователю сообщение о том, что от него ожидается текст для сообщения-рассылки
+    '''
+    await delete_previous_msg(update, context)
+    previously_msg = await send_response(update, 
+                                        context,
+                                        response=render_template("input_text_for_sending_all_users_bot.j2"),
+                                        inline_keyboard=keyboards.button_main_menu_markup)
+    context.user_data['previously_msg_id'] = previously_msg.message_id
+    return "ACCEPTTEXTMSG"
+    
+async def accept_text_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    '''Функция текст для сообщения и начинает рассылку по всем пользователям бота при получении подтверждения
+    '''
+    await delete_previous_msg(update, context)
+    tg_user_id: int = get_chat_id(update)
+    text_for_sending = update.message.text
+    try:
+        photo_id = update.message['photo'][-1]['file_id']
+    except IndexError:
+        photo_id = None
+    if photo_id is not None:      
+        context.user_data["photo_id"] = photo_id
+        context.user_data["photo_caption"] = update.message.caption         
+    else:
+        context.user_data["text_for_sending"] = text_for_sending
+    previously_msg = await send_response(update, 
+                                            context,
+                                            response=render_template("accepting_text_for_sending_msg.j2"),
+                                            inline_keyboard=keyboards.yes_no_sending_msg_markup)    
+    context.user_data["previously_msg_id"] = previously_msg.message_id
+    return "YES_SENDING_MSG"
+    
+async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    '''Функция делает рассылку сообщения всем пользователям бота
+    '''
+    await delete_previous_msg(update, context)
+    tg_user_id: int = get_chat_id(update)   
+    list_all_users_in_bot = await users()
+    if list_all_users_in_bot['status'] == 'error':   
+        previously_msg = await send_response(update, context, 
+                        response=render_template("errors/server_error_for_admin.j2"),
+                        inline_keyboard=keyboards.button_main_menu_markup)
+        context.user_data["previously_msg_id"] = previously_msg.message_id
+        return ConversationHandler.END
+    else:
+        text_for_sending = context.user_data.get("text_for_sending", None)
+        photo_id = context.user_data.get("photo_id", None)
+        photo_caption = context.user_data.get("photo_caption", None)
+        user_list_forbidden = []   
+        for user in list_all_users_in_bot['data']: 
+            if str(user["telegram_id"]) not in settings.list_admins:
+                if text_for_sending is not None:
+                    try:
+                        await context.bot.send_message(chat_id=user["telegram_id"],
+                                                       text=text_for_sending,
+                                                       parse_mode=telegram.constants.ParseMode.HTML
+                                                        )   
+                    except telegram.error.Forbidden:
+                        user_list_forbidden.append(user["telegram_id"])
+                    await asyncio.sleep(0.5)
+                elif photo_id is not None:
+                    try:
+                        await context.bot.send_photo(chat_id = user["telegram_id"],
+                                                      caption = photo_caption,
+                                                      photo = photo_id,
+                                                      parse_mode=telegram.constants.ParseMode.HTML)   
+                    except telegram.error.Forbidden:
+                        user_list_forbidden.append(user["telegram_id"])
+                    await asyncio.sleep(0.5)
+        previously_msg = await send_response(update, 
+                            context,
+                            response=render_template("report_after_sending_msg_for_admin.j2", data={"total": len(list_all_users_in_bot['data']), 
+                                                                                                    "blocked_bots": user_list_forbidden,
+                                                                                                    "len": len}),
+                            inline_keyboard=keyboards.button_main_menu_markup
+                            )
+        context.user_data["previously_msg_id"] = previously_msg.message_id
+        return ConversationHandler.END

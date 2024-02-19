@@ -1,0 +1,7 @@
+{% for n,key in enumerate(keys, 1) %}
+{% if key['name_key'] is none %}
+	Ключ № {{n}}: <b>{{key['api_key'][:10]+"..."+key['api_key'][-10:]}}</b><br>
+{% else %}
+	Ключ № {{n}}: <b>{{key['name_key']}}</b><br>
+{% endif %}
+{% endfor %}

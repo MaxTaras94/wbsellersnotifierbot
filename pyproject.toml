@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "wbsellersnotifierbot"
+version = "0.1.0"
+description = ""
+authors = ["Maksim Tarasutin <maks@tarasutin.ru>"]
+readme = "README.md"
+packages = [{include = "wbsellersnotifierbot"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+asyncpg = "^0.29.0"
+sqlalchemy = { version = "^2.0.23", extras = ["asyncio"] }
+gspread = "^5.11.0"
+httpx = "^0.25"
+jinja2 = "==3.1.2"
+openpyxl = "^3.1"
+pandas = ">=2.1"
+pydantic=">=2.5.2"
+pydantic-settings = ">=0.2.0"
+python-dotenv = ">=0.21.1"
+python-telegram-bot = { version = "^20.0", extras = ["job-queue"] }
+pytz = ">=2023.3"
+schulze = "==0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "==0.0.240"
+pyright = "==1.1.291"
+black = "==23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+select = ["F", "E", "W", "C90",
+          "I", "N", "S", "B", "A",
+          "ISC", "T20", "Q", "PTH"]
+
+ignore = ["A003"]
+
+[tool.pyright]
+reportUnnecessaryTypeIgnoreComment="warning"

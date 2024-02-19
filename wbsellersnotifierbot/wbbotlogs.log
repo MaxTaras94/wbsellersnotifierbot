@@ -1,0 +1,30 @@
+2024-02-08 18:06:25,348 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_application.py", line 1234, in process_update
+    await coroutine
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_conversationhandler.py", line 857, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\telegram\ext\_basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\start.py", line 27, in start
+    await user_menu(update, context)
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\handlers\user_menu.py", line 20, in user_menu
+    previously_msg = await send_response(update, context, response=render_template("main_menu.j2"),
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\Documents\йнд\Hohlov\wbsellersnotifierbot\wbsellersnotifierbot\templates.py", line 10, in render_template
+    template = _get_template_env().get_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dnevn\AppData\Local\pypoetry\Cache\virtualenvs\wbsellersnotifierbot-g1XHU19s-py3.11\Lib\site-packages\jinja2\loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: main_menu.j2
