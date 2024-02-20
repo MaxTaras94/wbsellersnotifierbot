@@ -39,10 +39,10 @@ def create_conv_hand_remove_api_key() -> ConversationHandler:
     conv_handler_remove_api_key = ConversationHandler(
     entry_points=[CallbackQueryHandler(remove_api_wb_key, pattern="remove_wb_api_key")],
     states={
+        "GET_NUM_KEY_4_DELETE": [MessageHandler(filters.Regex('^\d+$'), get_num_key_from_user_for_delete)],
         "YES_NO_DECISION_DELETE": [CallbackQueryHandler(confirmation_key_delition, pattern="confirmation_key_delition"),
                                    CallbackQueryHandler(get_api_wb_keys, pattern="wb_api_keys")
-                                   ],
-        "GET_NUM_KEY_4_DELETE": [MessageHandler(filters.Regex('\d'), get_num_key_from_user_for_delete)],
+                                   ]
         },
     fallbacks=[CommandHandler("menu", start)],
     )

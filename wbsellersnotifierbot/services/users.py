@@ -1,6 +1,7 @@
+import aiohttp
 from typing import List, Optional
 from pydantic import BaseModel, ConfigDict
-import httpx
+# import httpx
 from wbsellersnotifierbot.settings import settings
 
 class UserResponse(BaseModel):
@@ -15,10 +16,11 @@ async def users() -> List[UserResponse]:
     '''Функция возвращает список с данными пользователей
     '''
     try:
-        async with httpx.AsyncClient() as client:      
-            data = await client.get(settings.url_api_service+"api/users/get_users")
-            return data.json()
-    except httpx.ConnectError as e:
+        async with aiohttp.ClientSession() as client:
+            async with client.get(settings.url_api_service+"api/users/get_users") as users:
+                data = await users.json()
+        return data
+    except Exception as e:
         err_msg["text_error"] = e
         return err_msg
                 
@@ -26,10 +28,11 @@ async def user(tg_user_id: int) -> List[UserResponse]:
     '''Функция возвращает данные по пользователю
     '''
     try:
-        async with httpx.AsyncClient() as client:      
-            data = await client.get(settings.url_api_service+f"api/users/get_user/{tg_user_id}/")
-            return data.json()
-    except httpx.ConnectError as e:
+        async with aiohttp.ClientSession() as client:
+            async with client.get(settings.url_api_service+f"api/users/get_user/{tg_user_id}/") as user:
+                data = await user.json()
+        return data
+    except Exception as e:
         err_msg["text_error"] = e 
         return err_msg           
 
@@ -40,16 +43,18 @@ async def create_user(tg_user_id: int,
     '''Функция возвращает данные по пользователю после создания записи в БД
     '''
     try:
-        async with httpx.AsyncClient() as client:      
-            response = await client.post(settings.url_api_service+"api/users/create_user",
-                                     json={"telegram_id": tg_user_id,
-                                           "username": username,
-                                           "source": source})
-        if response.status_code == 201:
-            return response.json()
+        async with aiohttp.ClientSession() as client:      
+            async with client.post(settings.url_api_service+"api/users/create_user",
+                                   json={"telegram_id": tg_user_id,
+                                         "username": username,
+                                         "source": source}) as response_to_create:
+                data = await response_to_create.json()
+                status_code = response_to_create.status
+        if status_code == 201:
+            return data
         else:
-            err_msg["text_error"] = response.text_error
+            err_msg["text_error"] = data
             return err_msg
-    except httpx.ConnectError as e:
+    except Exception as e:
         err_msg["text_error"] = e 
         return err_msg 

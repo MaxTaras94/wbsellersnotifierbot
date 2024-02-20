@@ -11,31 +11,17 @@ from wbsellersnotifierbot.services.wb_keys import get_wb_keys, remove_wb_key
 from wbsellersnotifierbot.settings import settings
 from wbsellersnotifierbot.templates import render_template
 
-async def get_api_wb_keys_buttons(update: Update,
-                                  context: ContextTypes.DEFAULT_TYPE,
-                                  name_menu_section: str):
-    '''Возвращает список кнопок с ключами пользователя для заданного меню
-    Аргументы:
-    name_menu_section -- имя раздела где будут отображаться эти кнопки
-    '''
-    tg_user_id: int = get_chat_id(update)
-    await delete_previous_msg(update, context)
-    all_user_keys = await get_api_wb_keys(update, context)
-    buttons = []
-    if all_user_keys == '':   
-        return buttons
-    else:
-        for key in all_user_keys:
-            name = key['api_key'][:10]+"..."+key['api_key'][-10:] if key['name_key'] is None else key['name_key']
-            buttons.append([InlineKeyboardButton(name, callback_data=f'{name_menu_section}_{key["id"]}')])
-        buttons.append([keyboards.main_menu])
-        return buttons
+
     
 async def get_api_wb_keys(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Union[str|dict]:
-    '''Функция отправляет пользователю список список его ключей и возвращает соответствующие этому значения типа str
+    '''Функция отправляет пользователю список его ключей и возвращает соответствующие этому значения типа str
     '''
     query_data = update.callback_query.data
     tg_user_id: int = get_chat_id(update)
+    try:
+        del context.user_data["num_key_for_del"]
+    except:
+        pass
     all_user_keys = await get_wb_keys(tg_user_id)
     await delete_previous_msg(update, context)
     if all_user_keys['status'] == 'error':   
@@ -63,9 +49,30 @@ async def get_api_wb_keys(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                                                              ),
                                     inline_keyboard=keyboards.api_keys_users_markup_full)
                 context.user_data['previously_msg_id'] = previously_msg.message_id
+                return ConversationHandler.END
             else:
                 return all_user_keys["data"]
-    
+
+async def get_api_wb_keys_buttons(update: Update,
+                                  context: ContextTypes.DEFAULT_TYPE,
+                                  name_menu_section: str):
+    '''Возвращает список кнопок с ключами пользователя для заданного меню
+    Аргументы:
+    name_menu_section -- имя раздела где будут отображаться эти кнопки
+    '''
+    tg_user_id: int = get_chat_id(update)
+    await delete_previous_msg(update, context)
+    all_user_keys = await get_api_wb_keys(update, context)
+    buttons = []
+    if all_user_keys == '':   
+        return buttons
+    else:
+        for key in all_user_keys:
+            name = key['api_key'][:10]+"..."+key['api_key'][-10:] if key['name_key'] is None else key['name_key']
+            buttons.append([InlineKeyboardButton(name, callback_data=f'{name_menu_section}_{key["id"]}')])
+        buttons.append([keyboards.main_menu])
+        return buttons
+        
 async def remove_api_wb_key(update: Update, context: ContextTypes.DEFAULT_TYPE):
     '''Запрашивает у пользователя информацию по ключу для удаления
     '''
@@ -91,17 +98,20 @@ async def remove_api_wb_key(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def get_num_key_from_user_for_delete(update: Update, context: ContextTypes.DEFAULT_TYPE):
     num_key_for_del = update.message.text
-    indexes_of_keys_user = [i[0] for i in enumerate(context.user_data.get("all_user_keys"), 1)]
+    try:
+        indexes_of_keys_user = [i[0] for i in enumerate(context.user_data.get("all_user_keys"), 1)]
+    except Exception as e:
+        print(e)
     await delete_previous_msg(update, context)
     if int(num_key_for_del) not in indexes_of_keys_user:
-        previously_msg = await send_response(update, 
+        await send_response(update, 
                         context,
                         response=render_template("api_keys_wb/key_delition_fail_incorrect_num_key.j2",
                                                   data={"num":num_key_for_del}
                                                  )
                         )
-        context.user_data["previously_msg_id"] = previously_msg.message_id
-        await delete_previous_msg(update, context)
+        # context.user_data["previously_msg_id"] = previously_msg.message_id
+        # await delete_previous_msg(update, context)
         previously_msg = await send_response(update, 
                             context,
                             response=render_template("api_keys_wb/menu_api_keys.j2", 
@@ -127,8 +137,9 @@ async def get_num_key_from_user_for_delete(update: Update, context: ContextTypes
 async def confirmation_key_delition(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user_id: int = get_chat_id(update)
     num_key_for_del = context.user_data.get("num_key_for_del")
+    del context.user_data["num_key_for_del"]
     id_wb_key_for_wel = context.user_data.get("all_user_keys")[int(num_key_for_del)-1]['id']
-    await remove_wb_key(id_wb_key_for_wel)
+    results_deleting_key = await remove_wb_key(id_wb_key_for_wel)
     await delete_previous_msg(update, context)
     previously_msg = await send_response(update, 
                     context,
@@ -149,7 +160,6 @@ async def confirmation_key_delition(update: Update, context: ContextTypes.DEFAUL
                                                      ),
                             inline_keyboard=keyboards.api_keys_users_markup_full)
         context.user_data["previously_msg_id"] = previously_msg.message_id
-        return ConversationHandler.END
     else:
         previously_msg = await send_response(update, 
                             context,
@@ -157,3 +167,4 @@ async def confirmation_key_delition(update: Update, context: ContextTypes.DEFAUL
                             inline_keyboard=keyboards.api_keys_users_markup_add
                             )
         context.user_data["previously_msg_id"] = previously_msg.message_id
+    return ConversationHandler.END
