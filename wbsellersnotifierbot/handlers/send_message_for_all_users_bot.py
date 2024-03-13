@@ -27,7 +27,8 @@ async def accept_text_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     '''
     await delete_previous_msg(update, context)
     tg_user_id: int = get_chat_id(update)
-    text_for_sending = update.message.text
+    id_message_for_sending = update.message.message_id
+    chat_id_message_for_sending = update.message.chat_id
     try:
         photo_id = update.message['photo'][-1]['file_id']
     except IndexError:
@@ -36,7 +37,8 @@ async def accept_text_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["photo_id"] = photo_id
         context.user_data["photo_caption"] = update.message.caption         
     else:
-        context.user_data["text_for_sending"] = text_for_sending
+        context.user_data["id_message_for_sending"] = id_message_for_sending
+        context.user_data["chat_id_message_for_sending"] = chat_id_message_for_sending
     previously_msg = await send_response(update, 
                                             context,
                                             response=render_template("accepting_text_for_sending_msg.j2"),
@@ -57,33 +59,39 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["previously_msg_id"] = previously_msg.message_id
         return ConversationHandler.END
     else:
-        text_for_sending = context.user_data.get("text_for_sending", None)
+        id_message_for_sending = context.user_data.get("id_message_for_sending", None)
+        chat_id_message_for_sending = context.user_data.get("chat_id_message_for_sending", None)
         photo_id = context.user_data.get("photo_id", None)
         photo_caption = context.user_data.get("photo_caption", None)
-        user_list_forbidden = []   
+        user_list_forbidden = []
+        success_sending = 0      
         for user in list_all_users_in_bot['data']: 
             if str(user["telegram_id"]) not in settings.list_admins:
-                if text_for_sending is not None:
+                if id_message_for_sending is not None:
                     try:
-                        await context.bot.send_message(chat_id=user["telegram_id"],
-                                                       text=text_for_sending,
-                                                       parse_mode=telegram.constants.ParseMode.HTML
-                                                        )   
-                    except telegram.error.Forbidden:
+                        await context.bot.copy_message(chat_id=user["telegram_id"],
+                                                       from_chat_id=chat_id_message_for_sending,
+                                                       message_id=id_message_for_sending,
+                                                       parse_mode=telegram.constants.ParseMode.MARKDOWN_V2
+                                                       ) 
+                        success_sending += 1
+                    except (telegram.error.Forbidden, telegram.error.BadRequest):
                         user_list_forbidden.append(user["telegram_id"])
                     await asyncio.sleep(0.5)
                 elif photo_id is not None:
                     try:
                         await context.bot.send_photo(chat_id = user["telegram_id"],
-                                                      caption = photo_caption,
-                                                      photo = photo_id,
-                                                      parse_mode=telegram.constants.ParseMode.HTML)   
-                    except telegram.error.Forbidden:
+                                                     caption = photo_caption,
+                                                     photo = photo_id,
+                                                     parse_mode=telegram.constants.ParseMode.MARKDOWN_V2)
+                        success_sending += 1
+                    except (telegram.error.Forbidden, telegram.error.BadRequest):
                         user_list_forbidden.append(user["telegram_id"])
                     await asyncio.sleep(0.5)
         previously_msg = await send_response(update, 
                             context,
-                            response=render_template("report_after_sending_msg_for_admin.j2", data={"total": len(list_all_users_in_bot['data']), 
+                            response=render_template("report_after_sending_msg_for_admin.j2", data={"total": len(list_all_users_in_bot['data']),
+                                                                                                    "success_sending": success_sending,
                                                                                                     "blocked_bots": user_list_forbidden,
                                                                                                     "len": len}),
                             inline_keyboard=keyboards.button_main_menu_markup
