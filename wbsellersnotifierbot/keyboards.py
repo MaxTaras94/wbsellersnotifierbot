@@ -6,6 +6,8 @@ from telegram import (
     ReplyKeyboardRemove
     )
 
+
+
 #Кнопка Регистрация для приветственного сообщения
 registration_keyboard = [[InlineKeyboardButton('Регистрация', callback_data='registration_seller')]]
 registration_markup = InlineKeyboardMarkup(registration_keyboard)
@@ -21,7 +23,9 @@ menu_users_markup = InlineKeyboardMarkup(menu_users_keyboard)
 
 #Кнопки Главного меню для админов
 menu_admin_keyboard = [[InlineKeyboardButton('Все пользователи бота', callback_data='get_all_users_in_bot')],
-                        [InlineKeyboardButton('Сообщение всем пользователям 📩', callback_data='send_message_all_users_in_bot')]]
+                        [InlineKeyboardButton('Сообщение всем пользователям 📩', callback_data='send_message_all_users_in_bot')],
+                        [InlineKeyboardButton('Проверка подписки на канал📢', callback_data='get_info_for_checking_subscription')]
+                       ]
 for _ in menu_users_keyboard[:-2]:
     menu_admin_keyboard.append(_)
 menu_admin_markup = InlineKeyboardMarkup(menu_admin_keyboard)
@@ -55,3 +59,29 @@ yes_no_keyboard_for_sending_msg = [
 yes_no_sending_msg_markup = InlineKeyboardMarkup(yes_no_keyboard_for_sending_msg)
 #Кнопки в меню при выгрузке базы пользователей для админов
 download_users_xlsx_keyboard = InlineKeyboardMarkup([[InlineKeyboardButton('Выгрузить в .xlsx 🧾', callback_data='download_users_xlsx_button')],[main_menu]])
+
+
+def keyboardgen_for_menu_notification(data_for_gen_keyboard: list) -> InlineKeyboardMarkup:
+    keyboard = []
+    BUTTON_NOTIFICATION = {"Заказы":"nfcorders",
+                           "Продажи":"nfcsales",
+                           "Возвраты":"nfcrefunds"
+                           }
+    for button in data_for_gen_keyboard:
+        keyboard.append([InlineKeyboardButton(button[2]+"  " +button[1],
+                                              callback_data=f'{BUTTON_NOTIFICATION[button[1]]}_{button[0]}'
+                                              )
+                        ]
+                       )
+    keyboard.append([InlineKeyboardButton('Сохранить💾', callback_data='save_new_notific'), main_menu])
+    return InlineKeyboardMarkup(keyboard)
+
+def keyboardgen_for_menu_check_subscription(data_for_gen_keyboard: list) -> InlineKeyboardMarkup:
+    keyboard = []
+    keyboard.append([InlineKeyboardButton(data_for_gen_keyboard[0][1]+"  " +data_for_gen_keyboard[0][0],
+                                          callback_data='check_subscription'
+                                          )
+                    ]
+                   )
+    keyboard.append([InlineKeyboardButton('Сохранить💾', callback_data='save_new_check_subscription'), main_menu])
+    return InlineKeyboardMarkup(keyboard)

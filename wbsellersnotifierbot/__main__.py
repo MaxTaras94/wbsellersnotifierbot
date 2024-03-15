@@ -46,11 +46,14 @@ def main():
     application.add_handler(CallbackQueryHandler(handlers.getting_statistics, pattern="statapikey"))
     application.add_handler(CallbackQueryHandler(handlers.save_new_notific, pattern="save_new_notific"))
     application.add_handler(CallbackQueryHandler(handlers.remove_api_wb_key, pattern="remove_wb_api_key"))
+    application.add_handler(CallbackQueryHandler(handlers.save_settings, pattern="save_new_check_subscription"))
     application.add_handler(CallbackQueryHandler(handlers.get_all_users_in_bot, pattern="get_all_users_in_bot"))
     application.add_handler(CallbackQueryHandler(handlers.choose_key_for_get_statistics, pattern="statisctics"))
     application.add_handler(CallbackQueryHandler(handlers.get_all_notifications_for_user, pattern="notifapikey"))
     application.add_handler(CallbackQueryHandler(handlers.download_users_xlsx, pattern="download_users_xlsx_button"))
     application.add_handler(CallbackQueryHandler(handlers.choose_key_for_get_notifications, pattern="set_notifications"))
+    application.add_handler(CallbackQueryHandler(handlers.button_status_check_subscription, pattern="check_subscription"))
+    application.add_handler(CallbackQueryHandler(handlers.get_info_for_checking_subscription, pattern="get_info_for_checking_subscription"))
     
     
     application.run_polling()

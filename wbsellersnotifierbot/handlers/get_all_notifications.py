@@ -19,21 +19,6 @@ from wbsellersnotifierbot.templates import render_template
     
 
 
-def keyboardgen(data_for_gen_keyboard: list) -> InlineKeyboardMarkup:
-    keyboard = []
-    BUTTON_NOTIFICATION = {"Заказы":"nfcorders",
-                           "Продажи":"nfcsales",
-                           "Возвраты":"nfcrefunds"
-                           }
-    for button in data_for_gen_keyboard:
-        keyboard.append([InlineKeyboardButton(button[2]+"  " +button[1],
-                                              callback_data=f'{BUTTON_NOTIFICATION[button[1]]}_{button[0]}'
-                                              )
-                        ]
-                       )
-    keyboard.append([InlineKeyboardButton('Сохранить💾', callback_data='save_new_notific'), keyboards.main_menu])
-    return InlineKeyboardMarkup(keyboard)
-
 async def choose_key_for_get_notifications(update: Update, context: ContextTypes.DEFAULT_TYPE):
     '''Возвращает список ключей пользователя для выбора по какому из них настраивать уведомления
     '''
@@ -70,7 +55,7 @@ async def get_all_notifications_for_user(update: Update, context: ContextTypes.D
             data_for_menu.append([data['id'], type_operation, visual_ckeck])
         sorted_data_for_menu = sorted(data_for_menu, key=lambda x: x[1])
         print(f"sorted_data_for_menu = {sorted_data_for_menu}")
-        keyboard_markup = keyboardgen(sorted_data_for_menu)
+        keyboard_markup = keyboards.keyboardgen_for_menu_notification(sorted_data_for_menu)
         await delete_previous_msg(update, context)
         previously_msg = await send_response(update, 
                                 context,

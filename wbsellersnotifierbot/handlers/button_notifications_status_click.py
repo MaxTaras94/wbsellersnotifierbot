@@ -11,13 +11,11 @@ from telegram.ext import ContextTypes, ConversationHandler
 from typing import cast
 from wbsellersnotifierbot import keyboards
 from wbsellersnotifierbot.handlers.response import get_chat_id, send_response
-from wbsellersnotifierbot.handlers.get_all_notifications import keyboardgen
 from wbsellersnotifierbot.handlers.delete_message import delete_previous_msg
 from wbsellersnotifierbot.services.notifications import get_all_notifications, update_notifications
 from wbsellersnotifierbot.settings import settings
 from wbsellersnotifierbot.templates import render_template
 
-from .get_all_notifications import get_all_notifications_for_user
 
 async def button_status_click(update: Update, context: ContextTypes.DEFAULT_TYPE):
     '''Функция работает с кнопками в меню Настройка уведомлений
@@ -46,7 +44,7 @@ async def button_status_click(update: Update, context: ContextTypes.DEFAULT_TYPE
                                                         chat_id=query.message.chat_id,
                                                         message_id=query.message.message_id,
                                                         text=render_template("menu_notifications/setting_up_notifications.j2"),
-                                                        reply_markup=keyboardgen(new_keyboard)
+                                                        reply_markup=keyboards.keyboardgen_for_menu_notification(new_keyboard)
                                                         )
     context.user_data['previously_msg_id'] = previously_msg.message_id   
 

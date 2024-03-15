@@ -27,8 +27,12 @@ async def accept_text_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     '''
     await delete_previous_msg(update, context)
     tg_user_id: int = get_chat_id(update)
-    id_message_for_sending = update.message.message_id
-    chat_id_message_for_sending = update.message.chat_id
+    try:
+        id_message_for_sending = update.message.message_id
+        chat_id_message_for_sending = update.message.chat_id
+    except:
+        id_message_for_sending = None
+        chat_id_message_for_sending = None
     try:
         photo_id = update.message['photo'][-1]['file_id']
     except IndexError:
@@ -66,7 +70,7 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user_list_forbidden = []
         success_sending = 0      
         for user in list_all_users_in_bot['data']: 
-            if str(user["telegram_id"]) not in settings.list_admins:
+            if user["telegram_id"] == 449441982 or str(user["telegram_id"]) not in settings.list_admins:
                 if id_message_for_sending is not None:
                     try:
                         await context.bot.copy_message(chat_id=user["telegram_id"],
@@ -83,7 +87,7 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         await context.bot.send_photo(chat_id = user["telegram_id"],
                                                      caption = photo_caption,
                                                      photo = photo_id,
-                                                     parse_mode=telegram.constants.ParseMode.MARKDOWN_V2)
+                                                     parse_mode=telegram.constants.ParseMode.HTML)
                         success_sending += 1
                     except (telegram.error.Forbidden, telegram.error.BadRequest):
                         user_list_forbidden.append(user["telegram_id"])
