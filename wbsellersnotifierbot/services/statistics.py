@@ -22,7 +22,7 @@ async def statistics(tg_user_id: int, key_id: int) -> List[StatData]:
     try:
         async with aiohttp.ClientSession() as client:
             async with client.get(settings.url_api_service+f"api/get_statistics/?user_telegram_id={tg_user_id}&key_id={key_id}") as statistics:
-                data = await statistics.json()
+                data = await statistics.json(content_type=None)
         return data
     except Exception as e:
         err_msg["text_error"] = e
