@@ -21,7 +21,7 @@ import wbsellersnotifierbot.handlers as handlers
 
 logging.basicConfig(
     filename="wbbotlogs.log",
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.WARNING
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 

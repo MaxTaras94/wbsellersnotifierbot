@@ -10,6 +10,7 @@ from wbsellersnotifierbot.services.digit_separator import digit_separator
 from wbsellersnotifierbot.services.statistics import statistics
 from wbsellersnotifierbot.services.wb_keys import get_wb_keys
 from wbsellersnotifierbot.templates import render_template
+from wbsellersnotifierbot.__main__ import logger
 
 
 async def choose_key_for_get_statistics(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -36,7 +37,7 @@ async def getting_statistics(update: Update, context: ContextTypes.DEFAULT_TYPE)
     context.user_data['previously_msg_id'] = previously_msg.message_id
     stat_data = await statistics(tg_user_id, key_id)
     await delete_previous_msg(update, context)
-    print(f"В ф-ции getting_statistics. stat_data = {stat_data}")
+    logger.info(f"В ф-ции getting_statistics. stat_data = {stat_data}")
     if stat_data["status"] == "error":
         previously_msg = await send_response(update,
                                          context, 
