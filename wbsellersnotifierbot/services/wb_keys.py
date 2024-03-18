@@ -57,7 +57,7 @@ async def set_wb_key_for_user(tg_user_id: int, api_key: str, name_key: str|None)
                                            "api_key": api_key,
                                            "name_key": name_key
                                            })
-        data = await set_wb_key_for_user.json()
+        data = set_wb_key_for_user.json()
         status_code = set_wb_key_for_user.status_code
         if status_code == 201 or status_code == 200:
             return data
