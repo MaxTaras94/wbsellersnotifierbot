@@ -1,7 +1,7 @@
-import aiohttp
+# import aiohttp
 from typing import List, Optional
 from pydantic import BaseModel, ConfigDict
-# import httpx
+import httpx
 from wbsellersnotifierbot.settings import settings
 
 class StatData(BaseModel):
@@ -20,10 +20,9 @@ async def statistics(tg_user_id: int, key_id: int) -> List[StatData]:
     '''Функция возвращает статистику по заказам/продажам/возвратам пользователей
     '''
     try:
-        async with aiohttp.ClientSession() as client:
-            async with client.get(settings.url_api_service+f"api/get_statistics/?user_telegram_id={tg_user_id}&key_id={key_id}") as statistics:
-                data = await statistics.json(content_type=None)
-        return data
+        async with httpx.AsyncClient() as client
+            data = await client.get(settings.url_api_service+f"api/get_statistics/?user_telegram_id={tg_user_id}&key_id={key_id}")     
+        return data.json()
     except Exception as e:
         err_msg["text_error"] = e
         return err_msg
