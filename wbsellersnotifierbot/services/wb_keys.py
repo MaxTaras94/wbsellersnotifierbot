@@ -1,4 +1,3 @@
-# import aiohttp
 from datetime import datetime
 import httpx
 from typing import List, Optional, Union
