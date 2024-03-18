@@ -11,7 +11,7 @@ async def get_wb_keys(tg_user_id: int) -> dict:
     '''Функция возвращает список с API ключами пользователей
     '''
     try:
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(timeout=30) as client:
             wb_keys = await client.get(settings.url_api_service+f"api/wb_keys/get_wb_keys/{tg_user_id}/")
         return wb_keys.json()
     except Exception as e:
@@ -23,7 +23,7 @@ async def remove_wb_key(wb_key_id: int) -> dict:
     '''Функция удаляет API ключ пользователя
     '''
     try:
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(timeout=30) as client:
             remove_wb_key = await client.delete(settings.url_api_service+f"api/wb_keys/delete_wb_key/{wb_key_id}")
         return remove_wb_key.json()
     except Exception as e:
@@ -36,7 +36,7 @@ async def check_wb_key(api_key: str) -> dict:
     '''
     
     try:
-        async with httpx.AsyncClient() as client: 
+        async with httpx.AsyncClient(timeout=30) as client: 
             check_wb_key = await client.get(settings.url_wb_for_checking_key,
                                   headers={"Authorization": api_key},
                                   params={'dateFrom':datetime.now().strftime("%Y-%m-%d")}
@@ -51,7 +51,7 @@ async def set_wb_key_for_user(tg_user_id: int, api_key: str, name_key: str|None)
     '''Функция возвращает данные после создания записи в БД
     '''
     try:
-        async with httpx.AsyncClient() as client:     
+        async with httpx.AsyncClient(timeout=30) as client:     
             set_wb_key_for_user = await client.post(settings.url_api_service+"api/wb_keys/set_wb_key",
                                    json={"user_telegram_id": tg_user_id,
                                            "api_key": api_key,
