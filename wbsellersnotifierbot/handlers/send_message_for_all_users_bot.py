@@ -73,21 +73,23 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if user["telegram_id"] == 449441982 or str(user["telegram_id"]) not in settings.list_admins:
                 if id_message_for_sending is not None:
                     try:
-                        await context.bot.copy_message(chat_id=user["telegram_id"],
-                                                       from_chat_id=chat_id_message_for_sending,
-                                                       message_id=id_message_for_sending,
-                                                       parse_mode=telegram.constants.ParseMode.MARKDOWN_V2
-                                                       ) 
+                        msg = await context.bot.copy_message(chat_id=user["telegram_id"],
+                                                               from_chat_id=chat_id_message_for_sending,
+                                                               message_id=id_message_for_sending,
+                                                               parse_mode=telegram.constants.ParseMode.MARKDOWN_V2
+                                                               ) 
+                        await context.bot.pin_chat_message(chat_id=user["telegram_id"], message_id=msg.message_id)
                         success_sending += 1
                     except (telegram.error.Forbidden, telegram.error.BadRequest):
                         user_list_forbidden.append(user["telegram_id"])
                     await asyncio.sleep(0.5)
                 elif photo_id is not None:
                     try:
-                        await context.bot.send_photo(chat_id = user["telegram_id"],
+                        msg = await context.bot.send_photo(chat_id = user["telegram_id"],
                                                      caption = photo_caption,
                                                      photo = photo_id,
                                                      parse_mode=telegram.constants.ParseMode.HTML)
+                        await context.bot.pin_chat_message(chat_id=user["telegram_id"], message_id=msg.message_id)
                         success_sending += 1
                     except (telegram.error.Forbidden, telegram.error.BadRequest):
                         user_list_forbidden.append(user["telegram_id"])

@@ -19,7 +19,7 @@ async def statistics(tg_user_id: int, key_id: int) -> List[StatData]:
     '''Функция возвращает статистику по заказам/продажам/возвратам пользователей
     '''
     try:
-        async with httpx.AsyncClient(timeout=30) as client:
+        async with httpx.AsyncClient(timeout=120) as client:
             data = await client.get(settings.url_api_service+f"api/get_statistics/?user_telegram_id={tg_user_id}&key_id={key_id}")     
         return data.json()
     except Exception as e:
