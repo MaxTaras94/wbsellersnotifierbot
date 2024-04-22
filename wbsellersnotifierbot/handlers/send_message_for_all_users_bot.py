@@ -70,7 +70,8 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user_list_forbidden = []
         success_sending = 0      
         for user in list_all_users_in_bot['data']: 
-            if user["telegram_id"] == 449441982 or str(user["telegram_id"]) not in settings.list_admins:
+            if str(user["telegram_id"]) in settings.list_admins:
+            # if user["telegram_id"] == 449441982 or str(user["telegram_id"]) not in settings.list_admins:
                 if id_message_for_sending is not None:
                     try:
                         msg = await context.bot.copy_message(chat_id=user["telegram_id"],

@@ -24,7 +24,8 @@ menu_users_markup = InlineKeyboardMarkup(menu_users_keyboard)
 #Кнопки Главного меню для админов
 menu_admin_keyboard = [[InlineKeyboardButton('Все пользователи бота', callback_data='get_all_users_in_bot')],
                         [InlineKeyboardButton('Сообщение всем пользователям 📩', callback_data='send_message_all_users_in_bot')],
-                        [InlineKeyboardButton('Проверка подписки на канал📢', callback_data='get_info_for_checking_subscription')]
+                        [InlineKeyboardButton('Проверка подписки на канал📢', callback_data='get_info_for_checking_subscription')],
+                        [InlineKeyboardButton('Открепить все сообщения📌', callback_data='unpin_all_messages_start')]
                        ]
 for _ in menu_users_keyboard[:-2]:
     menu_admin_keyboard.append(_)
@@ -57,6 +58,14 @@ yes_no_keyboard_for_sending_msg = [
         ]
     ]
 yes_no_sending_msg_markup = InlineKeyboardMarkup(yes_no_keyboard_for_sending_msg)
+#Кнопки Да/нет для подтверждения/отмены открепления всех сообщений в чатах пользователей
+yes_no_keyboard_for_unpin_msg = [
+        [
+            InlineKeyboardButton('👌🏽', callback_data='accept_unpin_msg'),
+            InlineKeyboardButton('🙅', callback_data='menu'),
+        ]
+    ]
+yes_no_unpin_msg_markup = InlineKeyboardMarkup(yes_no_keyboard_for_unpin_msg)
 #Кнопки в меню при выгрузке базы пользователей для админов
 download_users_xlsx_keyboard = InlineKeyboardMarkup([[InlineKeyboardButton('Выгрузить в .xlsx 🧾', callback_data='download_users_xlsx_button')],[main_menu]])
 

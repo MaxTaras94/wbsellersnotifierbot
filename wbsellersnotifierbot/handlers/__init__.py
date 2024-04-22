@@ -10,6 +10,7 @@ from .menu_api_keys import (
     get_num_key_from_user_for_delete,
     remove_api_wb_key
 )
+from .unpin_all_messages import unpin_all_messages_start, unpin_all_messages_accept
 from .user_menu import user_menu
 
 
@@ -30,4 +31,6 @@ __all__ = ["button_status_click",
            "remove_api_wb_key",
            "save_new_notific",
            "save_settings",
+           "unpin_all_messages_accept",
+           "unpin_all_messages_start"
            "user_menu"]
