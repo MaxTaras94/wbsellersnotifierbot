@@ -69,6 +69,9 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         photo_caption = context.user_data.get("photo_caption", None)
         user_list_forbidden = []
         success_sending = 0      
+        mess_for_update_start = render_template("start_mailing.j2")
+        start_mailing = await send_response(update, context, response=mess_for_update_start)
+        counter = 0
         for user in list_all_users_in_bot['data']: 
             # if str(user["telegram_id"]) in settings.list_admins:
             if user["telegram_id"] == 449441982 or str(user["telegram_id"]) not in settings.list_admins:
@@ -83,7 +86,15 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         success_sending += 1
                     except (telegram.error.Forbidden, telegram.error.BadRequest):
                         user_list_forbidden.append(user["telegram_id"])
-                    await asyncio.sleep(0.5)
+                    finally:
+                        if counter < 4:
+                            counter += 1
+                            mess_for_update = mess_for_update_start+("."*counter)
+                        else:
+                            counter = 0
+                            mess_for_update = mess_for_update_start
+                        await context.bot.edit_message_text(mess_for_update, chat_id=tg_user_id, message_id=start_mailing.message_id)
+                    await asyncio.sleep(0.2)
                 elif photo_id is not None:
                     try:
                         msg = await context.bot.send_photo(chat_id = user["telegram_id"],
@@ -91,10 +102,20 @@ async def sending_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                                      photo = photo_id,
                                                      parse_mode=telegram.constants.ParseMode.HTML)
                         await context.bot.pin_chat_message(chat_id=user["telegram_id"], message_id=msg.message_id)
+                        
                         success_sending += 1
                     except (telegram.error.Forbidden, telegram.error.BadRequest):
                         user_list_forbidden.append(user["telegram_id"])
-                    await asyncio.sleep(0.5)
+                    finally:
+                        if counter < 4:
+                            counter += 1
+                            mess_for_update = mess_for_update_start+("."*counter)
+                        else:
+                            counter = 0
+                            mess_for_update = mess_for_update_start
+                        await context.bot.edit_message_text(mess_for_update, chat_id=tg_user_id, message_id=start_mailing.message_id)
+                    await asyncio.sleep(0.2)
+        await context.bot.delete_message(tg_user_id, start_mailing.message_id) 
         previously_msg = await send_response(update, 
                             context,
                             response=render_template("report_after_sending_msg_for_admin.j2", data={"total": len(list_all_users_in_bot['data']),
